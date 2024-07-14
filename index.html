@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dice Game</h1>
+        <div class="imagebox">
+            <div class="image1" id="imgbox1">
+                <h3>Player 1</h3>
+                <img src="" alt="" id="image1">
+            </div>
+            <div class="image2" id="imgbox2">
+                <h3>Player 2</h3>
+                <img src="" alt="" id="image2">
+            </div>
+        </div>
+       <div class="footer">
+        <button id="button">Dice</button>
+        <span id="winner"></span>
+       </div>
+    </div>
+</body>
+<script>
+    
+    var winner=document.getElementById("winner")
+    var button=document.getElementById('button')
+    var image2=document.getElementById('image2')
+    image2.style.display="none"
+    var image1=document.getElementById('image1')
+    image1.style.display="none"
+    var flag=false
+    button.addEventListener('click',()=>{
+        event.preventDefault();
+         image1.style.display="inline"
+          image2.style.display="inline"
+        flag=true
+        if(flag==true){
+            button.innerHTML='Dice Again'
+        }
+        let x=Math.floor(Math.random()*6);
+        let y=Math.floor(Math.random()*6);
+        if(x>y){
+        console.log("x won the game")
+         image1.src="./images/dice"+(x+1)+".png"
+         image2.src="./images/dice"+(y+1)+".png"
+        winner.innerHTML='Player 1 has won the game'
+    }
+    else if(x==y){
+        console.log('Match has been draw')
+        image1.src="./images/dice"+(x+1)+".png"
+        image2.src="./images/dice"+(y+1)+".png"
+         winner.innerHTML='Noone won the match'
+    }
+    else{
+        console.log("Y won the game")
+        image1.src="./images/dice"+(x+1)+".png"
+        image2.src="./images/dice"+(y+1)+".png";
+         winner.innerHTML='Player 2 has won the game'
+    }
+    })
+   
+</script>
+</html>
